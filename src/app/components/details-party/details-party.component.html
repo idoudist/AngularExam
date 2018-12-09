@@ -1,0 +1,17 @@
+<fieldset style="border: solid;  margin-left: 10px; border-color: #000000;"
+[ngStyle]="{'background-color' : party.nb_place > 100 ? 'yellow' : party.nb_place > 40 ? 'green' : 'orange' }">
+
+  <legend style="width:auto; margin-left: 10px;" >{{party.title}}</legend>
+  <b>Date:</b>{{party.date}}<br>
+  <b>Type:</b>{{party.type}}<br>
+  <b>nombre de place:</b>{{party.nb_place}}<br>
+  <b>nombre de place disponible:</b>{{disponible}}<br>
+  <b>Description:</b>{{party.description}}<br>
+  <button (click)="toggelShow()">Reserver</button>
+  <div *ngIf="show">
+    Nombre de place a reserver :
+      <input type="number" [(ngModel)]="res"> <br>
+      <button (click)="reserver()">Valider</button> 
+  </div>
+</fieldset>
+

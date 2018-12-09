@@ -1,0 +1,30 @@
+<h1>Prize de rendez vous</h1>
+specialities :
+<select (change)="selectedDoc(position.value)" #position >
+    <option  *ngFor="let spec of specialites">{{spec}}</option>
+</select>
+<h3>Doctors List</h3>
+<table border="1">
+    <tr>
+        <td>Nom</td><td>specialites</td><td>Disponibilite</td>
+    </tr>
+    <tr *ngFor="let doc of doctorlist">
+        <td *ngIf="selected == doc.specialite">{{doc.nom}}</td>
+        <td *ngIf="selected == doc.specialite">{{doc.specialite}}</td>
+        <td *ngIf="selected == doc.specialite">{{doc.disponibilite}}</td>
+        <td *ngIf="selected == doc.specialite">
+            <button (click)="toggleres(doc)" [disabled]="!doc.disponibilite">prendre rendez-vous</button>
+        </td>
+    </tr>
+</table>
+<!--
+(change)="selectedDoc()" [(ngModel)]="selcted" 
+-->
+<br>
+<div *ngIf="showres">
+    <h3>Reservation</h3>
+    <h4>{{resdoc.nom}}</h4>
+    <label>Nom de patient</label><br>
+    <input type="text"><br>
+    <button (click)="confirmerdv()">Confirmer</button>
+</div>
